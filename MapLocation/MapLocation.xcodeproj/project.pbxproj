@@ -10,7 +10,7 @@
 		083998A31E53F463000BB8E4 /* 01-bull-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 083998A21E53F463000BB8E4 /* 01-bull-icon.png */; };
 		083998A51E5415AC000BB8E4 /* 01-bird-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 083998A41E5415AC000BB8E4 /* 01-bird-icon.png */; };
 		083FC3031E5550B400BAB11E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 083FC3021E5550B400BAB11E /* GoogleService-Info.plist */; };
-		083FC3071E55807500BAB11E /* modelUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083FC3061E55807500BAB11E /* modelUser.swift */; };
+		083FC3071E55807500BAB11E /* UserInfom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083FC3061E55807500BAB11E /* UserInfom.swift */; };
 		08FA01B71E52E6A700CC0985 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FA01B61E52E6A700CC0985 /* AppDelegate.swift */; };
 		08FA01B91E52E6A700CC0985 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FA01B81E52E6A700CC0985 /* ViewController.swift */; };
 		08FA01BC1E52E6A700CC0985 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08FA01BA1E52E6A700CC0985 /* Main.storyboard */; };
@@ -25,7 +25,7 @@
 		083998A21E53F463000BB8E4 /* 01-bull-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "01-bull-icon.png"; sourceTree = "<group>"; };
 		083998A41E5415AC000BB8E4 /* 01-bird-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "01-bird-icon.png"; sourceTree = "<group>"; };
 		083FC3021E5550B400BAB11E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		083FC3061E55807500BAB11E /* modelUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = modelUser.swift; sourceTree = "<group>"; };
+		083FC3061E55807500BAB11E /* UserInfom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfom.swift; sourceTree = "<group>"; };
 		08FA01B31E52E6A700CC0985 /* MapLocation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapLocation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		08FA01B61E52E6A700CC0985 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		08FA01B81E52E6A700CC0985 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -84,7 +84,7 @@
 				08FA01C21E52E6A700CC0985 /* Info.plist */,
 				08FA01CA1E5308BF00CC0985 /* CustomAnnotation.swift */,
 				083FC3021E5550B400BAB11E /* GoogleService-Info.plist */,
-				083FC3061E55807500BAB11E /* modelUser.swift */,
+				083FC3061E55807500BAB11E /* UserInfom.swift */,
 			);
 			path = MapLocation;
 			sourceTree = "<group>";
@@ -235,7 +235,7 @@
 			files = (
 				08FA01B91E52E6A700CC0985 /* ViewController.swift in Sources */,
 				08FA01B71E52E6A700CC0985 /* AppDelegate.swift in Sources */,
-				083FC3071E55807500BAB11E /* modelUser.swift in Sources */,
+				083FC3071E55807500BAB11E /* UserInfom.swift in Sources */,
 				08FA01CB1E5308BF00CC0985 /* CustomAnnotation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

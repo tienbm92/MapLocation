@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import Firebase
 
 
 class ViewController: UIViewController {
@@ -15,6 +16,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     var locationManage = CLLocationManager()
     var locationArr:[CustomAnnotation] = [CustomAnnotation]()
+    var userArr:[UserInfom] = [UserInfom]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +35,7 @@ class ViewController: UIViewController {
         
 //        mapView.addAnnotation(annotation)
         mapView.addAnnotations(self.locationArr)
+        self.addDataInFirebase()
     }
     
 
@@ -86,6 +90,25 @@ class ViewController: UIViewController {
                 print(error?.localizedDescription ?? "nil")
             }
         }
+    }
+    func addDataInFirebase() {
+        let currentLocation = locationManage.location?.coordinate
+        var ref: FIRDatabaseReference!
+        ref = FIRDatabase.database().reference()
+        
+        let myLatitude = "\(currentLocation?.latitude ?? 0)"
+        let myLongtitude = "\(currentLocation?.longitude ?? 0)"
+        
+        let myLocation = UserInfom(name: "Tien", latitude: myLatitude, longtitude: myLongtitude)
+        
+        self.userArr.append(myLocation)
+        ref.ob
+//        ref.child("TienBM").setValue(userArr as NSArray)
+        
+//        ref.child("TienBM").setValue(self.userArr)
+//        ref.child("TienBM").child("Tien").setValue("1123")
+        
+        
     }
 
 }
