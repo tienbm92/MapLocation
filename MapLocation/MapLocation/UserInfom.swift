@@ -10,7 +10,7 @@ import Foundation
 
 
 
-class UserInfom {
+struct UserInfom {
     var name:String
     var latitude:String
     var longtitude:String

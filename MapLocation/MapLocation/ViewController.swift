@@ -102,10 +102,9 @@ class ViewController: UIViewController {
         let myLocation = UserInfom(name: "Tien", latitude: myLatitude, longtitude: myLongtitude)
         
         self.userArr.append(myLocation)
-        ref.ob
 //        ref.child("TienBM").setValue(userArr as NSArray)
         
-//        ref.child("TienBM").setValue(self.userArr)
+        ref.child("TienBM").setValue(self.userArr)
 //        ref.child("TienBM").child("Tien").setValue("1123")
         
         
