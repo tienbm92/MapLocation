@@ -3,5 +3,5 @@
 
 target 'MapLocation' do
   pod 'Firebase/Core'
-
+  pod 'Firebase/Database'
 end
