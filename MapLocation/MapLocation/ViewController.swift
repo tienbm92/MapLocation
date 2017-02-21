@@ -104,7 +104,7 @@ class ViewController: UIViewController {
         self.userArr.append(myLocation)
 //        ref.child("TienBM").setValue(userArr as NSArray)
         
-        ref.child("TienBM").setValue(self.userArr)
+//        ref.child("TienBM").setValue(myLo)
 //        ref.child("TienBM").child("Tien").setValue("1123")
         
         
