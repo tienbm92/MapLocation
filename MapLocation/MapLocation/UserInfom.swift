@@ -16,14 +16,17 @@ class UserInfom {
     var longtitude:String
     
     init(name:String, latitude:String, longtitude:String) {
-        
         self.name = name
         self.latitude = latitude
         self.longtitude = longtitude
-        
-        
     }
-    
+    func toAnyObject() -> Any {
+        return [
+            "name": name,
+            "latitude": latitude,
+            "longtitude": longtitude
+        ]
+    }
     
     
 }

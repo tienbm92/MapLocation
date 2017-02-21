@@ -16,7 +16,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     var locationManage = CLLocationManager()
     var locationArr:[CustomAnnotation] = [CustomAnnotation]()
-    var userArr:[UserInfom] = [UserInfom]()
+//    var userArr:[UserInfom] = [UserInfom]()
+    var ref: FIRDatabaseReference!
+//    ref = FIRDatabase.database().reference()
+    
+    
     
     
     override func viewDidLoad() {
@@ -27,15 +31,18 @@ class ViewController: UIViewController {
         locationManage.requestWhenInUseAuthorization()
         locationManage.startUpdatingLocation()
         mapView.showsUserLocation = true
-        self.addAnnnotationOnMapView()
         
-//        let curentLocation = locationManage.location?.coordinate
-//        
-//        let annotation = CustomAnnotation(title: "Education Framgia", subtitle: "Bui Minh Tien", coordinate: CLLocationCoordinate2D(latitude: (curentLocation?.latitude)!, longitude: (curentLocation?.longitude)!), image: UIImage(named: "01-bull-icon")!)
+//        self.addDataInFirebase() 
         
-//        mapView.addAnnotation(annotation)
-        mapView.addAnnotations(self.locationArr)
-        self.addDataInFirebase()
+        
+        self.readDataFromFirebase(_child: "QuanAn", image: "01-bull-icon")
+        self.readDataFromFirebase(_child: "TienBM", image: "01-bird-icon")
+
+        
+        
+        
+
+//        mapView.addAnnotations(self.locationArr)
     }
     
 
@@ -57,7 +64,15 @@ class ViewController: UIViewController {
         
         self.locationArr.append(destinationAnnotation)
         
+        
+        
         drawLineTowLocation(sourceLocation: curentLocation!, destination: destinationLocation)
+
+        
+//        let destinationLocation2 = CLLocationCoordinate2D(latitude: 21.006755, longitude: 105.802828)
+//        
+//        let destinationAnnotation2 = CustomAnnotation(title: "Education Framgia", subtitle: "Bui Minh Tien", coordinate: destinationLocation2, image: UIImage(named: "01-bird-icon")!)
+//        self.locationArr.append(destinationAnnotation2)
     }
     func drawLineTowLocation(sourceLocation: CLLocationCoordinate2D, destination: CLLocationCoordinate2D) {
         // tao the hien tren ban do
@@ -93,24 +108,35 @@ class ViewController: UIViewController {
     }
     func addDataInFirebase() {
         let currentLocation = locationManage.location?.coordinate
-        var ref: FIRDatabaseReference!
         ref = FIRDatabase.database().reference()
         
         let myLatitude = "\(currentLocation?.latitude ?? 0)"
         let myLongtitude = "\(currentLocation?.longitude ?? 0)"
         
         let myLocation = UserInfom(name: "Tien", latitude: myLatitude, longtitude: myLongtitude)
-        
-        self.userArr.append(myLocation)
-        ref.ob
-//        ref.child("TienBM").setValue(userArr as NSArray)
-        
-//        ref.child("TienBM").setValue(self.userArr)
-//        ref.child("TienBM").child("Tien").setValue("1123")
-        
+        ref.child("TienBM").setValue(myLocation.toAnyObject())
         
     }
-
+    func readDataFromFirebase(_child: String, image: String) {
+        ref = FIRDatabase.database().reference()
+        ref.child(_child).observeSingleEvent(of: .value, with: { (snapshot) in
+            if let snapshotValue = snapshot.value as? NSDictionary {
+                let name = snapshotValue["name"] as! String
+                let latitude_ = snapshotValue["latitude"] as! String
+                let longtitude_ = snapshotValue["longtitude"] as! String
+//                let QuanAnLocation = UserInfom(name: name, latitude: latitude, longtitude: longtitude)
+                let MemLocation = CLLocationCoordinate2D(latitude: CLLocationDegrees(latitude_)!, longitude: CLLocationDegrees(longtitude_)!)
+                let MemAnntation = CustomAnnotation(title: name, subtitle: "Education Framgia", coordinate: MemLocation, image: UIImage(named: image)!)
+//                self.locationArr.append(MemAnntation)
+                self.mapView.addAnnotation(MemAnntation)
+                
+            }
+        }) {(error) in
+            print("Eroor", error.localizedDescription)
+        }
+        
+    }
+    
 }
 extension ViewController: CLLocationManagerDelegate, MKMapViewDelegate{
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
